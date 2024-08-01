@@ -37,6 +37,11 @@ public class D3Test {
   JavascriptExecutor js;
   @Before
   public void setUp() {
+    try {
+        proc = Runtime.getRuntime().exec("./wait-for-webserver.sh");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--headless");
     driver = new ChromeDriver(options);
